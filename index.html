@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>محاكي بيبراس موهبة – القندس</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1efe8;--sf:#faf9f5;--ink:#2b3836;--mu:#68756f;--ln:#dcd8cb;--ac:#3b7d77;--acs:#e1eeeb;--am:#d89a45;--ok:#4a8c5f;--oks:#e2efe5;--bad:#b5524a;--bads:#f3e1de;--wt:#6b9fc4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b2321;--sf:#232d2b;--ink:#e3e9e6;--mu:#9aa9a4;--ln:#34423f;--ac:#7cc2b8;--acs:#26413d;--am:#e0ad63;--ok:#7bc796;--oks:#25392c;--bad:#e08d85;--bads:#3b2624;--wt:#7fb0d3}.art{filter:brightness(.78) saturate(.85)}}
+:root[data-theme="dark"]{--bg:#1b2321;--sf:#232d2b;--ink:#e3e9e6;--mu:#9aa9a4;--ln:#34423f;--ac:#7cc2b8;--acs:#26413d;--am:#e0ad63;--ok:#7bc796;--oks:#25392c;--bad:#e08d85;--bads:#3b2624;--wt:#7fb0d3}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Tajawal,system-ui,sans-serif;font-size:17px;line-height:1.85;min-height:100vh}
+main{max-width:640px;margin:0 auto;padding:16px 16px 48px}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+h1{font-size:1.3rem;margin:0;font-weight:800;color:var(--ac)}h2{font-size:1.05rem;margin:18px 0 8px;font-weight:800}
+nav:empty{display:none}nav{display:flex;gap:4px;background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:4px;margin-bottom:14px}
+nav button{flex:1;border:0;background:none;color:var(--mu);font:inherit;font-weight:700;font-size:.85rem;padding:9px 2px;border-radius:9px;cursor:pointer}
+nav button.on{background:var(--ac);color:#fff}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--am);outline-offset:2px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.st b{display:block;font-size:1.6rem;font-weight:800;line-height:1.2}.st span,.sm{color:var(--mu);font-size:.85rem}
+.up{color:var(--ok)}.down{color:var(--bad)}
+.btn{display:block;width:100%;border:0;background:var(--ac);color:#fff;font:inherit;font-weight:800;font-size:1.05rem;padding:13px;border-radius:12px;cursor:pointer;margin-top:10px}
+.btn.alt{background:var(--acs);color:var(--ac)}.btn.ok{background:var(--ok)}
+.ghost{background:none;border:1px solid var(--ln);color:var(--mu);font:inherit;padding:6px 12px;border-radius:9px;cursor:pointer;margin:8px 0 0 6px}
+.hero{background:var(--acs);color:var(--ink);border:1px solid var(--ln)}.hero .big{font-size:2.8rem;font-weight:800;line-height:1.2;color:var(--ac)}.hero small{color:var(--mu)}
+.bar{height:8px;background:var(--ln);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac);border-radius:9px}
+.top{display:flex;justify-content:space-between;align-items:center;font-weight:700;margin-bottom:6px;gap:8px}
+.tabs{display:flex;gap:6px;margin:10px 0}
+.tabs button{flex:1;border:2px solid var(--ln);background:var(--sf);color:var(--ink);font:inherit;font-weight:700;padding:8px 2px;border-radius:10px;cursor:pointer}
+.tabs .on{border-color:var(--ac);background:var(--acs)}.tabs .dn{background:var(--oks);border-color:var(--ok)}.tabs :disabled{opacity:.45;cursor:not-allowed}
+
+.art{width:100%;display:block;border-radius:14px;margin:8px 0;border:1px solid var(--ln)}
+.msg{text-align:center;font-weight:700;min-height:1.6em;margin:8px 0 0}
+.tk{border:2px solid var(--ln);background:var(--sf);color:var(--ink);font:inherit;border-radius:12px;padding:10px;cursor:pointer;text-align:center}
+.set{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--ln);gap:8px}.set:last-child{border:0}
+.set button{width:34px;height:34px;border-radius:9px;border:1px solid var(--ln);background:var(--sf);color:var(--ink);font:inherit;font-size:1.1rem;cursor:pointer;margin:0 6px}
+.set button.on{background:var(--ac);color:#fff}
+.g{display:grid;gap:4px;margin:10px auto;direction:ltr}
+.cell{aspect-ratio:1;border:2px solid var(--ln);border-radius:8px;background:var(--sf);font-size:1.3rem;cursor:pointer;color:var(--ink);padding:0;display:grid;place-items:center}
+.cell.on{background:var(--am);border-color:var(--am)}.cell.on2{background:#c4673a;border-color:#c4673a}.cell.w{background:var(--wt);border-color:var(--wt);cursor:default}
+.cell.fx{background:var(--acs)}.cell.fx.on{background:var(--ac)}.cell.br{background:var(--ln);cursor:not-allowed}
+.rw{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:10px 0}
+.ch{min-width:52px;padding:10px;border:2px solid var(--ln);border-radius:10px;background:var(--sf);color:var(--ink);font:inherit;font-size:1.1rem;font-weight:700;cursor:pointer}
+.ch.on{background:var(--ac);color:#fff;border-color:var(--ac)}.ch.l{background:var(--wt);color:#14201d;border-color:var(--wt)}.ch.r{background:var(--am);color:#111;border-color:var(--am)}
+.lg{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:2px;min-width:40px;padding:4px;border:2px solid var(--ln);border-radius:10px;background:var(--sf);color:var(--ink);font:inherit;font-weight:700;cursor:pointer}
+.lg.on{border-color:var(--ac);background:var(--acs)}.lg.lk{border-style:dashed;opacity:.8}.lg i{display:block;width:26px;background:#a8703a;border-radius:6px 6px 3px 3px;border-top:4px solid #c89560}
+.gr{position:relative;width:300px;aspect-ratio:1;max-width:100%;margin:10px auto;direction:ltr}
+.gr svg{position:absolute;inset:0;width:100%;height:100%}
+.gr button{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;border:2px solid var(--ink);font-weight:800;cursor:pointer;color:#111;padding:0}
+.fbm{position:absolute;top:-13px;right:-8px;font-size:10px;background:var(--bad);color:#fff;border-radius:6px;padding:0 4px;line-height:15px}
+.pg{display:flex;gap:6px;direction:ltr}
+.pg button{flex:1;min-height:170px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;border:2px solid var(--ln);border-radius:10px;background:var(--sf);cursor:pointer;padding:6px 2px;color:var(--ink);font:inherit}
+.pg button.on{border-color:var(--ac);background:var(--acs)}.pg i{display:block;height:18px;border-radius:6px;background:#a8703a}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid var(--ln)}.row:last-child{border:0}.row small{color:var(--mu)}
+.cat{display:grid;grid-template-columns:110px 1fr 44px;align-items:center;gap:8px;margin:8px 0;font-size:.9rem}
+svg{display:block}.chart{width:100%;height:auto}
+label{display:block;font-weight:700;margin:10px 0 4px}
+input,select{width:100%;font:inherit;font-size:1.05rem;padding:11px;border:2px solid var(--ln);border-radius:10px;background:var(--sf);color:var(--ink)}
+.dopt{display:block;width:100%;text-align:start;background:var(--sf);color:var(--ink);border:2px solid var(--ln);font:inherit;font-size:1.1rem;padding:12px 14px;border-radius:12px;margin-bottom:8px;cursor:pointer}
+.dopt.on{border-color:var(--ac);background:var(--acs)}.dopt.ok{background:var(--oks);border-color:var(--ok)}.dopt.no{background:var(--bads);border-color:var(--bad)}
+.rec{background:var(--acs);border-radius:12px;padding:10px 12px;margin-top:8px}
+.ttl{display:flex;align-items:center;gap:12px;margin:12px 0 4px}.ttl>div{flex:1}.ttl b{font-size:1.2rem}
+.num{width:42px;height:42px;border-radius:50%;background:var(--ac);color:var(--bg);display:grid;place-items:center;font-weight:800;font-size:1.2rem}
+.nvs{display:flex;flex-wrap:wrap;gap:6px;padding:4px 2px 8px;margin-top:8px}
+.nv{flex:0 0 34px;height:34px;border-radius:50%;border:2px solid var(--ln);background:var(--sf);color:var(--ink);font:inherit;font-weight:700;cursor:pointer}
+.nv.dn{background:var(--oks);border-color:var(--ok)}.nv.cur{border-color:var(--ac);background:var(--ac);color:var(--bg)}
+.story{font-size:1.05rem;margin-bottom:10px}
+.task{background:var(--acs);border-inline-start:5px solid var(--am);border-radius:10px;padding:10px 14px;margin-bottom:8px}
+.expl{background:var(--oks);border-radius:12px;padding:10px 14px;margin-top:10px}
+.pn{display:flex;justify-content:space-between;margin-top:6px}
+.stuck{background:var(--bads);border-radius:12px;padding:10px 14px;margin-top:8px}.stuck[hidden]{display:none}
+.lnk{display:block;padding:10px 12px;border:1px solid var(--ln);border-radius:10px;margin-top:8px;color:var(--ac);font-weight:700;text-decoration:none}
+</style>
+</head>
+<body>
+<main>
+<header><h1>🦫 محاكي بيبراس موهبة</h1><span class="sm" id="dt"></span></header>
+<nav id="nav"></nav>
+<div id="app"></div>
+</main>
+<script>
+const $=s=>document.querySelector(s),rnd=n=>Math.random()*n|0,sh=a=>a.sort(()=>Math.random()-.5),pc=v=>{let c=0;while(v){c+=v&1;v>>=1}return c},clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const D={u:[-1,0],d:[1,0],l:[0,-1],r:[0,1]},AR={u:'↑',d:'↓',l:'←',r:'→'};
+function grid(n,f){return`<div class="g" style="grid-template-columns:repeat(${n},1fr);max-width:${n*56}px">`+Array.from({length:n*n},(_,k)=>{const r=k/n|0,c=k%n,x=f(r,c);return`<button class="cell ${x[0]}" data-a="c" data-i="${r},${c}">${x[1]||''}</button>`}).join('')+'</div>'}
+const inv=a=>a.reduce((s,x,i)=>s+a.slice(i+1).filter(y=>y<x).length,0);
+const cyc=a=>{const v=[];let c=0;a.forEach((x,i)=>{if(!v[i]){c++;let j=i;while(!v[j]){v[j]=1;j=a[j]-1}}});return c};
+function bfs(m,S,G,F,al){const full=(1<<F.length)-1,bit=(r,c)=>{const i=F.findIndex(f=>f[0]==r&&f[1]==c);return i<0?0:1<<i},dist=new Map([[S+',0',0]]),ways=new Map([[S+',0',1]]),q=[[S[0],S[1],0]];for(let h=0;h<q.length;h++){const[r,c,k]=q[h],key=r+','+c+','+k,d=dist.get(key);if(r==G[0]&&c==G[1]&&k==full)return[d,ways.get(key)];for(const x of al){const nr=r+D[x][0],nc=c+D[x][1];if(m[nr]&&m[nr][nc]&&m[nr][nc]!='#'){const nk=k|bit(nr,nc),kk=nr+','+nc+','+nk;if(!dist.has(kk)){dist.set(kk,d+1);ways.set(kk,ways.get(key));q.push([nr,nc,nk])}else if(dist.get(kk)==d+1)ways.set(kk,ways.get(kk)+ways.get(key))}}}return[99,0]}
+const ap=(v,o)=>o[0]=='+'?v+ +o.slice(1):o[0]=='×'?v*o.slice(1):v-o.slice(1);
+const pv=s=>{let v=s.s;return s.q.map(i=>v=ap(v,s.o[i]))},mval=s=>pv(s).at(-1)??s.s;
+const ddist=(s,o,fb)=>{const d={[s]:0},w={[s]:1},q=[s];for(let h=0;h<q.length;h++){const v=q[h];for(const x of o){const u=ap(v,x);if(u<0||u>400||fb.includes(u))continue;if(d[u]===undefined){d[u]=d[v]+1;w[u]=w[v];q.push(u)}else if(d[u]==d[v]+1)w[u]+=w[v]}}return[d,w]};
+const PAT={p:[[0,0],[1,0],[-1,0],[0,1],[0,-1]],x:[[0,0],[1,1],[1,-1],[-1,1],[-1,-1]],b:[-1,0,1].flatMap(a=>[-1,0,1].map(c=>[a,c]))};
+const lmasks=(n,p)=>Array.from({length:n*n},(_,i)=>{let m=0;PAT[p].forEach(([a,b])=>{const r=(i/n|0)+a,c=i%n+b;if(r>=0&&r<n&&c>=0&&c<n)m|=1<<(r*n+c)});return m});
+function lmin(n,M,v){const N=n*n,cur=new Int32Array(1<<N);let b=99,ct=0;for(let s=1;s<1<<N;s++){const i=31-Math.clz32(s&-s);cur[s]=cur[s&(s-1)]^M[i];if(cur[s]==v){const c=pc(s);if(c<b){b=c;ct=1}else if(c==b)ct++}}return[b,ct]}
+function hb(n,P,a,b,nos,cap){const st=Array(n).fill(a),g=Array(n).fill(b).join(''),q=[[st,0,0]],v=new Set([st.join('')+0]);for(let h=0;h<q.length;h++){const[s,d,lm]=q[h];if(s.join('')==g)return d;for(let x=0;x<P;x++){const i=s.indexOf(x);if(i<0)continue;if(nos&&i==0&&lm)continue;for(let y=0;y<P;y++){if(y==x)continue;const j=s.indexOf(y);if(j>=0&&j<i)continue;if(cap&&y!=a&&y!=b&&s.filter(z=>z==y).length>=cap)continue;const t=[...s];t[i]=y;const nl=i==0?1:0,k=t.join('')+nl;if(!v.has(k)){v.add(k);q.push([t,d+1,nl])}}}}return 99}
+function rb(b,t,K,ws,wr){const n=b.length,g=t.join(''),q=[[b,0]],v=new Set([b.join('')]);for(let h=0;h<q.length;h++){const[s,d]=q[h];if(s.join('')==g)return d;for(const w of ws)for(let p=0;p<(wr?n:n-w+1);p++){const x=[...s];for(let j=p;j<p+w;j++)x[j%n]=(x[j%n]+1)%K;const k=x.join('');if(!v.has(k)){v.add(k);q.push([x,d+1])}}}return 99}
+const mst=(n,E,ok,must)=>{const p=[...Array(n).keys()],f=x=>p[x]==x?x:p[x]=f(p[x]);let c=0,k=0;const use=i=>{const[a,b,w]=E[i],x=f(a),y=f(b);if(x!=y){p[x]=y;c+=w;k++}};if(must>=0)use(must);[...E.keys()].filter(i=>ok[i]&&i!=must).sort((a,b)=>E[a][2]-E[b][2]).forEach(use);return k==n-1?c:99};
+const colCount=(n,adj,fx,fb)=>{const c=Array(n).fill(0);let cnt=0;const go=i=>{if(cnt>1)return;if(i==n){cnt++;return}for(let k=1;k<=3;k++){if(fx[i]&&fx[i]!=k)continue;if(fb[i]==k)continue;if(adj[i].some(j=>j<i&&c[j]==k))continue;c[i]=k;go(i+1)}c[i]=0};go(0);return cnt};
+const MN=['انعكاس أفقي (يمين/يسار)','انعكاس رأسي (أعلى/أسفل)','دوران 180°','انعكاس حول القطر'];
+const img=(m,n,r,c)=>m==0?[r,n-1-c]:m==1?[n-1-r,c]:m==2?[n-1-r,n-1-c]:[c,r];
+const given=(m,n,r,c)=>m==0?c<n/2:m==1||m==2?r<n/2:c>=r;
+const gcol=['var(--sf)','#d9776f','#6b9fc4','#e0b45f'],GL=['أ','ب','ج','د','هـ','و','ز','ح','ط','ي','ك','ل','م','ن','س'];
+const SH=['🔺','🟢','🟦','⭐'];
+function reachG(n,E,src,cl){const r=Array(n).fill(0);src.forEach(i=>r[i]=1);E.forEach(([a,b],i)=>{if(r[a]&&!cl[i])r[b]=1});return r}
+const ART=[['🦫','🌲','🍃','🌊','🏠'],['🪵','🪵','🪵','🦫','📏'],['🏠','🏠','🦫','🎨','🏠'],['💡','🦫','🕳️','💡','💡'],['🔺','🖌️','🦫','🟢','⭐'],['🏝️','🌉','🦫','🏝️','🪵'],['💧','🚰','🌾','🪨','🦫'],['🪵','⛰️','🦫','🪵','🏠'],['🔍','🪵','⚖️','🦫','🪵'],['⚙️','🦫','🔢','➡️','⚙️']];
+const art=k=>`<svg class="art" viewBox="0 0 400 120" role="img" aria-label="صورة المسألة"><rect width="400" height="120" fill="#dbeaf0"/><ellipse cx="90" cy="95" rx="150" ry="38" fill="#a9c98f"/><ellipse cx="330" cy="100" rx="130" ry="34" fill="#98bb7c"/><rect y="88" width="400" height="32" fill="#82b4cf"/><path d="M0 92q25-8 50 0t50 0 50 0 50 0 50 0 50 0 50 0 50 0" stroke="#cfe4ee" stroke-width="3" fill="none"/>${ART[k].map((e,i)=>`<text x="${50+i*75}" y="${i%2?78:70}" font-size="${i==2?54:42}" text-anchor="middle">${e}</text>`).join('')}</svg>`;
+const T=[
+{n:'طريق القندس',g:s=>`🦫 ساعد القندس على الوصول إلى بيته 🏠 دون عبور الماء 🌊${s.F.length?`، على أن يجمع كل الأوراق 🍃 (${s.F.length}) في طريقه`:''}.${s.al.length<4?` الأوامر الممنوعة: ${['u','d','l','r'].filter(x=>!s.al.includes(x)).map(x=>AR[x]).join(' ')}.`:''} استخدم ${s.lim} أوامر فقط؛ فالطريق الأقصر واحد لا غيره. ثم اضغط ▶ لتجربة الحل.`,
+ init(l,d){const n=Math.min(9,[6,6,7,8][l]+(d>>2)),nf=[0,1,2,2][l],al=[['u','d','l','r'],['u','d','l','r'],['u','d','r'],['d','r']][l];for(let t=0;;t++){const m=Array.from({length:n},()=>Array.from({length:n},()=>Math.random()<Math.min(.38,.2+.02*l+.01*d)?'#':'.'));m[0][0]='S';m[n-1][n-1]='G';const F=[];for(let i=0;i<nf;i++){const r=rnd(n),c=rnd(n);if(m[r][c]=='.'){m[r][c]='F';F.push([r,c])}}if(F.length<nf)continue;const S=[0,0],G=[n-1,n-1],[b,w]=bfs(m,S,G,F,al);if(b<99&&((w==1&&b>=n+2)||t>5000))return{m,S,G,F,al,p:[],pos:null,vis:[],fail:'',lim:b}}},
+ ui(s){const P=s.pos||s.S;return`<div class="g" style="grid-template-columns:repeat(${s.m.length},1fr);max-width:${s.m.length*50}px">`+s.m.map((r,i)=>r.map((x,j)=>`<div class="cell ${x=='#'?'w':''}" style="cursor:default">${i==P[0]&&j==P[1]?'🦫':x=='G'?'🏠':x=='#'?'🌊':x=='F'&&!s.vis.includes(i+','+j)?'🍃':''}</div>`).join('')).join('')+`</div><div class="rw">${s.al.map(k=>`<button class="ch" data-a="${k}">${AR[k]}</button>`).join('')}<button class="ch" data-a="x">⌫</button><button class="ch" data-a="k">مسح</button><button class="ch on" data-a="go">▶</button></div><p class="sm" dir="ltr" style="text-align:center">${s.p.map(x=>AR[x]).join(' ')||'—'} (${s.p.length}/${s.lim})</p><p class="down" style="text-align:center;margin:0">${s.fail}</p>`},
+ act(s,a){if(D[a]){if(s.p.length<s.lim)s.p.push(a)}else if(a=='x')s.p.pop();else if(a=='k')s.p=[];if(a!='go'){s.pos=null;s.fail='';s.vis=[];return}let[r,c]=s.S;s.fail='';s.vis=[];for(const x of s.p){const nr=r+D[x][0],nc=c+D[x][1];if(!s.m[nr]||!s.m[nr][nc]||s.m[nr][nc]=='#'){s.fail='اصطدم القندس بالماء!';break}r=nr;c=nc;if(s.m[r][c]=='F')s.vis.push(r+','+c)}s.pos=[r,c]},
+ ok:s=>s.pos&&!s.fail&&s.pos+''==s.G+''&&s.vis.length==s.F.length},
+{n:'ترتيب الجذوع',g:s=>`🦫 رتّب الجذوع ${s.desc?'من الأطول (يسارًا) إلى الأقصر (يمينًا)':'من الأقصر (يسارًا) إلى الأطول (يمينًا)'} ${s.any?'بتبديل أي جذعين (اضغط الأول ثم الثاني)':'بتبديل جذعين متجاورين فقط'}.${s.lk.length?' الجذوع المقفلة 🔒 لا تتحرك.':''} لديك ${s.lim} تبديلات فقط، والترتيب النهائي واحد لا غيره.`,
+ init(l,d){const any=l>=2,desc=l==3,n=Math.min(12,[6,7,8,10][l]+(d>>2)),k=[5,6,7,9][l]+(d>>2),nl=[0,2,2,3][l];for(let t=0;;t++){const lk=sh([...Array(n).keys()]).slice(0,nl),fr=[...Array(n).keys()].filter(i=>!lk.includes(i)),tg=[...Array(n).keys()].map(x=>desc?n-x:x+1),a=[...tg];for(let i=0;i<k;i++){if(any){const x=fr[rnd(fr.length)],y=fr[rnd(fr.length)];[a[x],a[y]]=[a[y],a[x]]}else{const x=rnd(n-1);if(lk.includes(x)||lk.includes(x+1))continue;[a[x],a[x+1]]=[a[x+1],a[x]]}}const m=desc?a.map(v=>n+1-v):a,lim=any?n-cyc(m):inv(m);if(lim>=(t>3000?3:Math.max(4,(k*2/3)|0)))return{a,tg,any,desc,lk,sel:-1,mv:0,lim,msg:''}}},
+ ui:s=>`<div class="rw" dir="ltr" style="align-items:flex-end">${s.a.map((x,i)=>`<button class="lg ${i==s.sel?'on':''} ${s.lk.includes(i)?'lk':''}" data-a="s" data-i="${i}"><i style="height:${x*11}px"></i>${s.lk.includes(i)?'🔒':x}</button>`).join('')}</div><p class="sm" style="text-align:center">التبديلات: ${s.mv} / ${s.lim}</p><p class="down msg">${s.msg}</p>`,
+ act(s,a,i){i=+i;s.msg='';if(s.lk.includes(i)){s.msg='هذا الجذع مقفل';s.sel=-1;return}if(s.sel<0)s.sel=i;else if(s.sel==i)s.sel=-1;else if(s.any||Math.abs(s.sel-i)==1){if(s.mv>=s.lim){s.msg='استنفدت التبديلات! اضغط «تراجع» أو «إعادة المستوى»';s.sel=-1;return}[s.a[s.sel],s.a[i]]=[s.a[i],s.a[s.sel]];s.mv++;s.sel=-1}else s.sel=i},
+ ok:s=>s.mv<=s.lim&&s.a.join()==s.tg.join()},
+{n:'ألوان البيوت',g:s=>`🦫 لوّن البيوت بثلاثة ألوان (اضغط البيت لتغيير لونه) بحيث لا يتشابه لون بيتين بينهما ممر. البيوت المقفلة 🔒 لونها ثابت.${s.fb.some(x=>x)?' والشارة الحمراء ✗ تعني أن هذا البيت لا يأخذ ذلك اللون.':''} التلوين الصحيح واحد لا غيره.`,
+ init(l,d){const n=Math.min(15,[8,9,11,13][l]+(d>>2)),nb=[0,0,3,5][l];for(;;){const h=Array.from({length:n},(_,i)=>i<3?i:rnd(3)),E=[];sh(h);for(let i=0;i<n;i++)for(let j=i+1;j<n;j++)if(h[i]!=h[j]&&Math.random()<.55+.04*l)E.push([i,j]);for(let i=0;i<n;i++)if(!E.some(e=>e.includes(i))){const j=h.findIndex((x,k)=>x!=h[i]&&k!=i);E.push([Math.min(i,j),Math.max(i,j)])}const adj=Array.from({length:n},()=>[]);E.forEach(([a,b])=>{adj[a].push(b);adj[b].push(a)});const fb=Array(n).fill(0);sh([...Array(n).keys()]).slice(0,nb).forEach(i=>{const o=[1,2,3].filter(x=>x!=h[i]+1);fb[i]=o[rnd(2)]});const fx=Array(n).fill(0);fx[E[0][0]]=h[E[0][0]]+1;fx[E[0][1]]=h[E[0][1]]+1;while(colCount(n,adj,fx,fb)>1){const c=[...Array(n).keys()].filter(i=>!fx[i]);if(!c.length)break;const i=c[rnd(c.length)];fx[i]=h[i]+1}if(fx.filter(x=>x).length>Math.max(3,(n*.4)|0))continue;return{n,E,fx,fb,c:[...fx]}}},
+ ui(s){const P=i=>[150+120*Math.cos(i*6.2832/s.n-1.5708),150+120*Math.sin(i*6.2832/s.n-1.5708)];return`<div class="gr"><svg viewBox="0 0 300 300">${s.E.map(([a,b])=>`<line x1="${P(a)[0]}" y1="${P(a)[1]}" x2="${P(b)[0]}" y2="${P(b)[1]}" stroke="var(--mu)" stroke-width="1.5"/>`).join('')}</svg>${s.c.map((c,i)=>`<button data-a="n" data-i="${i}" style="left:${P(i)[0]/3}%;top:${P(i)[1]/3}%;background:${gcol[c]};${s.fx[i]?'border-style:dashed;border-width:3px':''}">${s.fx[i]?'🔒':c?c:'🏠'}${s.fb[i]?`<b class="fbm">✗${s.fb[i]}</b>`:''}</button>`).join('')}</div>`},
+ act(s,a,i){if(!s.fx[i])s.c[i]=(s.c[i]+1)%4},ok:s=>s.c.every(x=>x)&&s.E.every(([a,b])=>s.c[a]!=s.c[b])&&s.c.every((x,i)=>x!=s.fb[i])},
+{n:'مصابيح الجحر',g:s=>`🦫 أطفئ كل مصابيح الجحر 💡. ${{p:'الضغط على مصباح يغيّر حالته وحالة المصابيح الأربعة المجاورة',x:'الضغط على مصباح يغيّر حالته وحالة المصابيح القطرية الأربعة المحيطة به',b:'الضغط على مصباح يغيّر حالته وحالة المصابيح الثمانية المحيطة به'}[s.p]}.${s.br.length?' المصابيح ⛔ معطلة ولا يمكن الضغط عليها.':''} لديك ${s.lim} ضغطات فقط، ومجموعة الضغطات الصحيحة واحدة لا غيرها.`,
+ init(l,d){const n=4,p=['p','p','x','b'][l],nb=[0,2,3,3][l],k=Math.min(10,[4,5,6,8][l]+(d>>1));for(let t=0;;t++){const M=lmasks(n,p),br=sh([...Array(n*n).keys()]).slice(0,nb);br.forEach(i=>M[i]=0);const ok=[...Array(n*n).keys()].filter(i=>!br.includes(i));let v=0;sh([...ok]).slice(0,k).forEach(i=>v^=M[i]);if(!v)continue;const[m,ct]=lmin(n,M,v);if(m<99&&m>=[3,3,4,5][l]&&(ct==1||t>1500))return{n,M,br,v,pr:0,lim:m,p,msg:''}}},
+ ui:s=>grid(s.n,(r,c)=>{const i=r*s.n+c;return[s.br.includes(i)?'br':s.v>>i&1?'on':'',s.br.includes(i)?'⛔':s.v>>i&1?'💡':'']})+`<p class="sm" style="text-align:center">الضغطات: ${s.pr} / ${s.lim}</p><p class="down msg">${s.msg}</p>`,
+ act(s,a,i){const[r,c]=i.split(',').map(Number),j=r*s.n+c;s.msg='';if(s.br.includes(j))return;if(s.pr>=s.lim){s.msg='استنفدت الضغطات! اضغط «تراجع» أو «إعادة المستوى»';return}s.v^=s.M[j];s.pr++},ok:s=>!s.v&&s.pr<=s.lim},
+{n:'الأسطوانة السحرية',g:s=>`🦫 الأسطوانة السحرية تغيّر كل شكل تمسّه إلى الشكل التالي (${SH.slice(0,s.K).join(' ← ')} ← ${SH[0]}). اختر أسطوانة ثم اضغط الخلية التي تبدأ منها لتغطي ${s.ws.join(' أو ')} خلايا متجاورة${s.wr?' (اللوحة دائرية: الأسطوانة تلتف من النهاية إلى البداية)':''}. حوّل اللوحة إلى الصورة المطلوبة بـ ${s.lim} ضربات فقط؛ والصورة النهائية واحدة لا غيرها.`,
+ init(l,d){const K=[3,3,4,4][l],n=[6,7,7,7][l],ws=[[2],[2,3],[2,3],[3,4]][l],wr=l==3,k=[4,5,6,7][l]+(d>>2);for(;;){const b=Array.from({length:n},()=>rnd(K)),t=[...b];for(let i=0;i<k;i++){const w=ws[rnd(ws.length)],p=rnd(wr?n:n-w+1);for(let j=p;j<p+w;j++)t[j%n]=(t[j%n]+1)%K}const lim=rb(b,t,K,ws,wr);if(lim>=Math.max(4,k-2)&&lim<99)return{K,ws,wr,b,t,rw:ws[0],mv:0,lim,msg:''}}},
+ ui:s=>`<p class="sm" style="text-align:center;margin:4px 0">الصورة المطلوبة</p><div class="rw" dir="ltr" style="gap:4px">${s.t.map(x=>`<span class="cell" style="width:44px;cursor:default;background:var(--acs)">${SH[x]}</span>`).join('')}</div><p class="sm" style="text-align:center;margin:4px 0">لوحتك</p><div class="rw" dir="ltr" style="gap:4px">${s.b.map((x,i)=>`<button class="cell" style="width:44px" data-a="cl" data-i="${i}">${SH[x]}</button>`).join('')}</div><div class="rw">${s.ws.map(w=>`<button class="ch ${s.rw==w?'on':''}" data-a="rw" data-i="${w}">أسطوانة ${w}</button>`).join('')}</div><p class="sm" style="text-align:center">الضربات: ${s.mv} / ${s.lim}</p><p class="down msg">${s.msg}</p>`,
+ act(s,a,i){i=+i;if(a=='rw'){s.rw=i;return}if(!s.wr&&i+s.rw>s.b.length){s.msg='لا تتسع الأسطوانة هنا';return}if(s.mv>=s.lim){s.msg='استنفدت الضربات! اضغط «تراجع» أو «إعادة المستوى»';return}for(let j=i;j<i+s.rw;j++)s.b[j%s.b.length]=(s.b[j%s.b.length]+1)%s.K;s.mv++;s.msg=''},ok:s=>s.mv<=s.lim&&s.b.join()==s.t.join()},
+{n:'جسور الجزر',g:s=>`🦫 اربط كل الجزر 🏝️ بجسور من الجذوع بحيث يصل القندس من أي جزيرة إلى أي جزيرة. الرقم على كل جسر هو عدد الجذوع اللازمة (اضغط الجسر لبنائه). ميزانيتك ${s.lim} جذعًا فقط، وأقل تكلفة ممكنة تعني حلًا واحدًا لا غيره.${s.ok.includes(0)?' الجسور المتقطعة ⛔ متهدمة ولا يمكن بناؤها.':''}${s.must>=0?' ويجب بناء الجسر المميز ⭐ بقرار من المجلس.':''}`,
+ init(l,d){const n=[6,7,9,10][l]+(d>>3),X=[4,6,9,12][l]+(d>>2);for(;;){const E=[],has=new Set(),add=(a,b)=>{const k=Math.min(a,b)+','+Math.max(a,b);if(a==b||has.has(k))return;has.add(k);E.push([Math.min(a,b),Math.max(a,b),1])};for(let i=0;i<n;i++)add(i,(i+1)%n);for(let i=0;i<X;i++)add(rnd(n),rnd(n));const W=sh([...E.keys()].map(x=>x+1));E.forEach((e,i)=>e[2]=W[i]);const ok=E.map(()=>1);sh([...E.keys()]).slice(0,[0,0,2,3][l]).forEach(i=>ok[i]=0);const must=l>=3?sh([...E.keys()].filter(i=>ok[i]))[0]:-1,lim=mst(n,E,ok,must);if(lim<99)return{n,E,ok,must,lim,x:E.map(()=>0),msg:''}}},
+ cost:s=>s.E.reduce((a,e,i)=>a+(s.x[i]?e[2]:0),0),
+ ui(s){const P=i=>[150+115*Math.cos(i*6.2832/s.n-1.5708),150+115*Math.sin(i*6.2832/s.n-1.5708)];return`<div class="gr"><svg viewBox="0 0 300 300">${s.E.map(([a,b,w],i)=>{const A=P(a),B=P(b),c=!s.ok[i]?'var(--ln)':s.x[i]?'var(--ok)':i==s.must?'var(--am)':'var(--mu)';return`<g data-a="e" data-i="${i}" style="cursor:pointer"><line x1="${A[0]}" y1="${A[1]}" x2="${B[0]}" y2="${B[1]}" stroke="${c}" stroke-width="${s.x[i]?5:2}" ${s.ok[i]?'':'stroke-dasharray="4 4"'}/><line x1="${A[0]}" y1="${A[1]}" x2="${B[0]}" y2="${B[1]}" stroke="transparent" stroke-width="16"/><text x="${(A[0]+B[0])/2}" y="${(A[1]+B[1])/2+4}" font-size="12" font-weight="800" text-anchor="middle" fill="var(--ink)" stroke="var(--sf)" stroke-width="3" paint-order="stroke">${s.ok[i]?w+(i==s.must?'⭐':''):'⛔'}</text></g>`}).join('')}${Array.from({length:s.n},(_,i)=>`<text x="${P(i)[0]}" y="${P(i)[1]+9}" font-size="26" text-anchor="middle">🏝️</text>`).join('')}</svg></div><p style="text-align:center;font-weight:700">التكلفة: ${T[5].cost(s)} / ${s.lim} جذعًا</p><p class="down msg">${s.msg}</p>`},
+ act(s,a,i){i=+i;s.msg='';if(!s.ok[i])return;if(!s.x[i]&&T[5].cost(s)+s.E[i][2]>s.lim){s.msg='تجاوزت الميزانية!';return}s.x[i]^=1},
+ ok(s){const p=[...Array(s.n).keys()],f=x=>p[x]==x?x:p[x]=f(p[x]);s.E.forEach(([a,b],i)=>{if(s.x[i])p[f(a)]=f(b)});return p.every((_,i)=>f(i)==f(0))&&T[5].cost(s)<=s.lim&&(s.must<0||s.x[s.must])}},
+{n:'بوابات الماء',g:s=>`🦫 يروي المزارع القندس حقوله من البحيرة عبر قنوات ماء تجري إلى الأسفل فقط ولا ترجع إلى الأعلى. يريد أن يصل الماء إلى كل حقول القمح 🌾 ولا يصل إلى أي حقل حجري 🪨. اختر البوابات التي تُغلق (اضغط الحرف) بحيث يتحقق ذلك.${s.fixed.length?' البوابات 🔓 معطلة وتبقى مفتوحة دائمًا.':''}${s.src.length>1?' للماء مصدران 💧 يعملان معًا.':''} الحل الصحيح واحد لا غيره.`,
+ init(l,d){const sz=[[1,2,3,3],[1,3,3,4],[1,3,4,4],[2,3,4,5]][l];for(let t=0;t<3000;t++){let id=0;const L=sz.map(c=>Array.from({length:c},()=>id++)),E=[];for(let i=0;i<3;i++){L[i].forEach(a=>{sh([...L[i+1]]).slice(0,1+rnd(2)).forEach(b=>E.push([a,b]))});L[i+1].forEach(b=>{if(!E.some(e=>e[1]==b))E.push([L[i][rnd(L[i].length)],b])})}
+  if(E.length>13)continue;const fl=L[3],ty=Array(id).fill(0);fl.forEach(f=>ty[f]=Math.random()<.5?1:2);if(!ty.includes(1)||!ty.includes(2))continue;const fx=E.map(()=>0);if(l>=2)sh([...E.keys()]).slice(0,2).forEach(i=>fx[i]=1);const good=cl=>{const r=reachG(id,E,L[0],cl);return fl.every(f=>ty[f]==1?r[f]:!r[f])};
+  for(let it=0;it<8;it++){const free=[...E.keys()].filter(i=>!fx[i]),sols=[];for(let m=0;m<1<<free.length;m++){const cl=E.map(()=>0);free.forEach((e,j)=>{if(m>>j&1)cl[e]=1});if(good(cl))sols.push(cl)}
+   if(!sols.length)break;if(sols.length==1){if(sols[0].filter(x=>x).length>=1+(l>>1))return{L,E,n:id,ty,src:L[0],fixed:fx.flatMap((x,i)=>x?[i]:[]),x:E.map(()=>0)};break}
+   sols.sort((a,b)=>a.filter(x=>x).length-b.filter(x=>x).length);const sol=sols[0],red=free.filter(e=>{const c=[...sol];c[e]^=1;return good(c)});if(!red.length)break;E.splice(red[0],1);fx.splice(red[0],1)}}
+  return{L:[[0],[1,2],[3,4],[5,6]],E:[[0,1],[0,2],[1,3],[1,4],[2,4],[3,5],[4,6]],n:7,ty:[0,0,0,0,0,1,2],src:[0],fixed:[],x:Array(7).fill(0)}},
+ ui(s){const P=id=>{for(let i=0;i<4;i++){const j=s.L[i].indexOf(id);if(j>=0)return[(j+1)/(s.L[i].length+1)*300,30+i*80]}};return`<div class="gr" style="aspect-ratio:1.05"><svg viewBox="0 0 300 285">${s.E.map(([a,b],i)=>{const A=P(a),B=P(b),m=[(A[0]+B[0])/2,(A[1]+B[1])/2],fx=s.fixed.includes(i),cl=s.x[i];return`<g data-a="g" data-i="${i}" style="cursor:${fx?'not-allowed':'pointer'}"><line x1="${A[0]}" y1="${A[1]}" x2="${B[0]}" y2="${B[1]}" stroke="var(--wt)" stroke-width="5" stroke-linecap="round" opacity=".75"/><circle cx="${m[0]}" cy="${m[1]}" r="13" fill="${cl?'var(--bad)':'var(--sf)'}" stroke="var(--ink)" stroke-width="1.5"/><text x="${m[0]}" y="${m[1]+5}" font-size="${fx?13:12}" font-weight="800" text-anchor="middle" fill="${cl?'#fff':'var(--ink)'}">${fx?'🔓':cl?'✕':GL[i]}</text></g>`}).join('')}${s.L.map((ly,i)=>ly.map(id=>{const p=P(id);return i==0?`<text x="${p[0]}" y="${p[1]+8}" font-size="26" text-anchor="middle">💧</text>`:i==3?`<text x="${p[0]}" y="${p[1]+10}" font-size="28" text-anchor="middle">${s.ty[id]==1?'🌾':'🪨'}</text>`:s.E.some(e=>e.includes(id))?`<circle cx="${p[0]}" cy="${p[1]}" r="5" fill="var(--wt)"/>`:''}).join('')).join('')}</svg></div><p class="sm" style="text-align:center">البوابات المغلقة: ${s.x.filter(x=>x).length}</p>`},
+ act(s,a,i){i=+i;if(!s.fixed.includes(i))s.x[i]^=1},
+ ok:s=>{const r=reachG(s.n,s.E,s.src,s.x);return s.L[3].every(f=>s.ty[f]==1?r[f]:!r[f])}},
+{n:'أبراج الجذوع',g:s=>`🦫 انقل كل الجذوع إلى المكان 🏠 بـ ${s.lim} حركات فقط (أقل عدد ممكن). لا يوضع جذع كبير فوق صغير، والأعمدة ${s.p.length}.${s.nos?' ممنوع تحريك أصغر جذع مرتين متتاليتين.':''}${s.cap?` الأعمدة الوسيطة تتسع لـ ${s.cap} جذوع فقط.`:''} (اضغط العمود المصدر ثم الهدف)`,
+ init(l,d){const P=4,n=[4,5,6,6][l],nos=l>=2,cap=l==3?3:0;for(;;){const a=rnd(P),b=(a+1+rnd(P-1))%P,lim=hb(n,P,a,b,nos,cap);if(lim<99){const p=Array.from({length:P},()=>[]);p[a]=Array.from({length:n},(_,i)=>n-i);return{n,p,tg:b,src:a,nos,cap,lm:0,sel:-1,mv:0,lim,msg:''}}}},
+ ui:s=>`<div class="pg">${s.p.map((P,i)=>`<button class="${i==s.sel?'on':''}" data-a="p" data-i="${i}">${i==s.tg?'<span>🏠</span>':''}${[...P].reverse().map(d=>`<i style="width:${d*12+10}px"></i>`).join('')}</button>`).join('')}</div><p class="sm" style="text-align:center">الحركات: ${s.mv} / ${s.lim}</p><p class="down msg">${s.msg}</p>`,
+ act(s,a,i){i=+i;s.msg='';if(s.sel<0){if(s.p[i].length)s.sel=i}else{if(s.sel!=i){const d=s.p[s.sel].at(-1),t=s.p[i].at(-1);if(t&&d>t){s.msg='لا يوضع جذع كبير فوق صغير'}else if(s.nos&&d==1&&s.lm==1)s.msg='ممنوع تحريك أصغر جذع مرتين متتاليتين';else if(s.cap&&i!=s.src&&i!=s.tg&&s.p[i].length>=s.cap)s.msg='هذا العمود ممتلئ';else if(s.mv>=s.lim)s.msg='استنفدت الحركات! اضغط «تراجع» أو «إعادة المستوى»';else{s.p[i].push(s.p[s.sel].pop());s.mv++;s.lm=d==1?1:0}}s.sel=-1}},ok:s=>s.p[s.tg].length==s.n&&s.mv<=s.lim},
+{n:'الجذع الثقيل',g:s=>`🦫 بين ${s.n} جذعًا جذع واحد أثقل من البقية. ضع جذوعًا على الكفتين (اضغط: يسار ← يمين ← خارج) ثم «زن».${s.cap?` كل كفة تتسع لـ ${s.cap} جذوع فقط.`:''} حدّد الأثقل بـ ${s.lim} وزنات فقط؛ الجذع الصحيح واحد.`,
+ init(l,d){const n=[5+rnd(5),10+rnd(9),19+rnd(9),41+rnd(40)][l];let k=0;while(3**k<n)k++;return{n,h:rnd(n),cap:[0,6,9,27][l],g:Array(n).fill(0),w:0,lim:k,msg:'',ans:0,bad:0,fin:0}},
+ ui:s=>`<div class="rw">${s.g.map((x,i)=>`<button class="ch ${['','l','r'][x]}" data-a="b" data-i="${i}" style="min-width:44px;padding:8px">${i+1}</button>`).join('')}</div><div class="rw"><button class="ch on" data-a="z">⚖️ زن (${s.w}/${s.lim})</button><button class="ch ${s.ans?'r':''}" data-a="y">${s.ans?'اختر الجذع الآن':'أعلن الأثقل'}</button></div><p class="msg">${s.msg}</p>`,
+ act(s,a,i){if(a=='b'){if(s.ans){s.ans=0;if(+i==s.h){s.fin=1;s.msg='اخترت الجذع الصحيح'}else{s.bad=1;s.msg='ليس هو الأثقل'}}else s.g[i]=(s.g[i]+1)%3}else if(a=='y')s.ans^=1;else if(a=='z'){const L=s.g.flatMap((x,i)=>x==1?[i]:[]),R=s.g.flatMap((x,i)=>x==2?[i]:[]);if(!L.length||L.length!=R.length){s.msg='ضع العدد نفسه في الكفتين';return}if(s.cap&&L.length>s.cap){s.msg='الكفة تتسع لـ '+s.cap+' فقط';return}if(s.w>=s.lim){s.msg='استنفدت الوزنات!';return}s.w++;s.msg=L.includes(s.h)?'اليسرى أثقل':R.includes(s.h)?'اليمنى أثقل':'الكفتان متساويتان'}},
+ ok:s=>s.fin&&!s.bad&&s.w<=s.lim},
+{n:'آلة السد',g:s=>`🦫 ابدأ من ${s.s} وطبّق العمليات بالترتيب (اضغط العملية لإضافتها) للوصول إلى ${s.t} بـ ${s.lim} عمليات فقط؛ والتسلسل الأقصر واحد لا غيره.${s.fb.length?` ⛔ ممنوع المرور بالأعداد: ${s.fb.join('، ')}.`:''}`,
+ init(l,d){const P=['+1','+2','+3','+5','×2','×3','−1','−2','+4','−3'],dt=[5,6,7,9][l]+Math.min(1,d>>2),no=[2,3,3,4][l],nf=[0,0,2,3][l];for(let t=0;t<4000;t++){const o=sh([...P]).slice(0,no);if(!o.some(x=>x[0]=='×'))continue;const s=1+rnd(9),[d0]=ddist(s,o,[]),c=Object.keys(d0).filter(k=>d0[k]==dt&&+k>s);if(!c.length)continue;const tt=+c[rnd(c.length)],mid=Object.keys(d0).filter(k=>d0[k]>=2&&d0[k]<dt&&+k!=tt).map(Number),fb=sh(mid).slice(0,nf),[d1,w1]=ddist(s,o,fb);if(d1[tt]!==undefined&&(w1[tt]==1||t>3000)&&d1[tt]<=dt+2)return{s,o,t:tt,fb,q:[],lim:d1[tt]}}return{s:1,t:10,o:['+1','×2'],fb:[],q:[],lim:4}},
+ ui:s=>`<p style="text-align:center;font-size:1.3rem;font-weight:800" dir="ltr">${s.q.reduce((a,i)=>a+` ${s.o[i]} →`,s.s)} = ${mval(s)}</p><div class="rw">${s.o.map((x,i)=>`<button class="ch" data-a="o" data-i="${i}">${x}</button>`).join('')}<button class="ch" data-a="x">⌫</button></div><p class="sm" style="text-align:center">العمليات: ${s.q.length} / ${s.lim}</p><p class="down msg">${pv(s).some(v=>s.fb.includes(v))?'مررت بعدد ممنوع ⛔':''}</p>`,
+ act(s,a,i){if(a=='o'){if(s.q.length<s.lim)s.q.push(+i)}else s.q.pop()},ok:s=>mval(s)==s.t&&s.q.length<=s.lim&&!pv(s).some(v=>s.fb.includes(v))}
+];
+
+const GR=[['الثالث الابتدائي',0],['الرابع الابتدائي',0],['الخامس الابتدائي',1],['السادس الابتدائي',1],['الأول المتوسط',2],['الثاني المتوسط',2],['الثالث المتوسط',3],['الأول الثانوي',3],['الثاني الثانوي',4],['الثالث الثانوي',4]];
+let prof=null,log=[],dr=[],cfg={dif:0,min:6,stop:4},S=null,view='home',tm=null,DQ=null,lastD=null;
+try{prof=JSON.parse(localStorage.getItem('bb3prof')||'null');log=JSON.parse(localStorage.getItem('bb2')||'[]');dr=JSON.parse(localStorage.getItem('bb3dr')||'[]');Object.assign(cfg,JSON.parse(localStorage.getItem('bb3cfg')||'{}'))}catch(e){}
+const save=()=>{try{localStorage.setItem('bb2',JSON.stringify(log));localStorage.setItem('bb3cfg',JSON.stringify(cfg));localStorage.setItem('bb3prof',JSON.stringify(prof));localStorage.setItem('bb3dr',JSON.stringify(dr))}catch(e){}};
+const base=()=>prof?GR[prof.g][1]:0,dEff=()=>Math.min(10,Math.floor(cfg.dif)+base());
+const dkey=d=>{const x=new Date(d);return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0')};
+const today=()=>dkey(Date.now()),daysAgo=n=>{const d=new Date();d.setDate(d.getDate()-n);return dkey(d)};
+const fmtD=k=>new Date(k+'T12:00:00').toLocaleDateString('ar-u-ca-gregory',{weekday:'long',day:'numeric',month:'long'});
+const sc=r=>10*(r.s.lastIndexOf(1)+1),tot=s=>s.r.reduce((a,r)=>a+sc(r),0),pct=s=>Math.round(tot(s)/(s.r.length*(s.mx||40))*100);
+const dayIdx=f=>{const a=log.filter(s=>f(s.d));return a.length?Math.round(a.reduce((x,s)=>x+pct(s),0)/a.length):null};
+function growth(){const a=daysAgo(6),cur=dayIdx(d=>d>=a),prev=dayIdx(d=>d>=daysAgo(13)&&d<=daysAgo(7));
+ if(cur!==null&&prev)return{cur,rate:Math.round((cur-prev)/prev*100),note:'مقارنة بالأسبوع السابق'};
+ const ds=[...new Set(log.map(s=>s.d))].sort();
+ if(ds.length>=2){const f=dayIdx(d=>d==ds[0]),l=dayIdx(d=>d==ds.at(-1));return{cur:cur??l,rate:f?Math.round((l-f)/f*100):0,note:'مقارنة بأول يوم تدريب'}}
+ return{cur,rate:null,note:'تحتاج يومين من التدريب لحساب المعدل'}}
+function streak(){const ds=new Set([...log,...dr].map(s=>s.d));let n=0,i=ds.has(today())?0:1;while(ds.has(daysAgo(i))){n++;i++}return n}
+const mmss=s=>{s=Math.max(0,Math.ceil(s));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
+const score=()=>Object.values(S.tk).reduce((a,t)=>a+10*(t.ok.lastIndexOf(1)+1),0);
+
+/* ===== قياس السرعة والتردد والمستوى الذهني ===== */
+function met(es){const A={sol:0,wr:0,und:0,rst:0,t:0,ft:0,fi:0,tk:0,deep:0};es.forEach(e=>e.r.forEach(r=>{const sv=r.s.lastIndexOf(1)+1;A.sol+=sv;A.wr+=r.a||0;A.und+=r.u||0;A.rst+=r.rs||0;A.t+=r.t||0;A.ft+=r.ft||0;A.fi+=r.f||0;A.tk++;if(sv>=3)A.deep++}));
+ if(!A.tk||A.sol+A.wr==0)return null;const sol=Math.max(1,A.sol),avg=A.t/sol,hes=(A.und+A.rst+A.wr)/sol,H=Math.min(100,clamp(hes/4,0,1)*100+Math.max(0,A.ft/A.tk-15));
+ return{acc:A.sol/(A.sol+A.wr)*100,speed:100*clamp(1.5-avg/120,0,1),dec:100-H,hes:H,plan:A.fi/sol*100,endu:A.deep/A.tk*100,avg,und:A.und,rst:A.rst,wr:A.wr,ft:A.ft/A.tk}}
+function dmet(){const a=dr.slice(-12);if(!a.length)return null;const n=a.reduce((x,r)=>x+r.n,0),ok=a.reduce((x,r)=>x+r.ok,0),t=a.reduce((x,r)=>x+r.t*r.n,0)/n,ch=a.reduce((x,r)=>x+r.ch*r.n,0)/n;return{acc:ok/n*100,speed:100*clamp(1.5-t/10,0,1),dec:100*clamp(1-ch/1.5,0,1),t,ch}}
+function mind(){const e=met(log.slice(-3)),d=dmet();if(!e&&!d)return null;const av=(a,b)=>a!=null&&b!=null?(a+b)/2:a??b,M={acc:av(e&&e.acc,d&&d.acc),speed:av(e&&e.speed,d&&d.speed),dec:av(e&&e.dec,d&&d.dec),plan:e?e.plan:null,endu:e?e.endu:null},w={acc:.3,speed:.2,dec:.2,plan:.2,endu:.1};let sw=0,sv=0;for(const k in w)if(M[k]!=null){sw+=w[k];sv+=w[k]*M[k]}M.all=Math.round(sv/sw);M.e=e;M.d=d;return M}
+const lv=v=>v<35?'مبتدئ':v<55?'متوسط':v<75?'متقدم':'متميز',hl=h=>h<25?'منخفض':h<50?'متوسط':'مرتفع';
+const DR={calc:'الحساب الذهني السريع',seq:'أنماط الأعداد',mem:'ذاكرة التسلسل',logic:'المنطق السريع'};
+const RC={speed:['calc','سرعة حلّك أقل من المطلوب'],dec:['seq','تتردد وتبدّل قرارك كثيرًا'],plan:['logic','تضغط «تحقق» قبل أن تخطط للحل'],acc:['logic','أخطاؤك عند التحقق كثيرة'],endu:['mem','لا تصل غالبًا إلى المستويات العليا']};
+function recHtml(M){if(!M)return'';const ks=Object.keys(RC).filter(k=>M[k]!=null).sort((a,b)=>M[a]-M[b]).filter(k=>M[k]<80).slice(0,2);
+ const all=log.slice(-5).flatMap(e=>e.r),ts=T.map((_,k)=>{const it=all.filter(r=>r.k==k);return it.length?[k,it.reduce((a,r)=>a+r.s.lastIndexOf(1)+1,0)/it.length]:null}).filter(Boolean).sort((a,b)=>a[1]-b[1])[0];
+ return`<h2>تدريبات مقترحة لك</h2>`+(ks.length?ks.map(k=>`<div class="rec"><b>${RC[k][1]}</b><br><span class="sm">التمرين المناسب: ${DR[RC[k][0]]}</span><button class="btn alt" data-dc="${RC[k][0]}">ابدأ تمرين ${DR[RC[k][0]]}</button></div>`).join(''):'<div class="rec">أداؤك متوازن، واصل وارفع الصعوبة من الإعدادات.</div>')+(ts?`<div class="rec"><b>أضعف مسألة لديك: ${T[ts[0]].n}</b><br><span class="sm">متوسط المستوى الذي تصل إليه ${ts[1].toFixed(1)} من 4</span><button class="btn alt" data-pk="${ts[0]}">تدرّب عليها الآن</button></div>`:'')}
+function bindRec(){document.querySelectorAll('[data-dc]').forEach(b=>b.onclick=()=>startDrill(b.dataset.dc));document.querySelectorAll('[data-pk]').forEach(b=>b.onclick=()=>start([+b.dataset.pk],'task'))}
+
+/* ===== التنقل ===== */
+function leave(){clearInterval(tm);if(DQ){clearTimeout(DQ.to);DQ=null}}
+function navb(){$('#nav').innerHTML=[['home','التدريب'],['drill','تمارين ذهنية'],['mind','مستواي'],['log','السجل']].map(([k,n])=>`<button class="${view==k||(k=='home'&&['main','task','done'].includes(view))||(k=='drill'&&['drillrun','drilldone'].includes(view))?'on':''}" data-v="${k}">${n}</button>`).join('');
+ $('#nav').querySelectorAll('button').forEach(b=>b.onclick=()=>{if(S&&(view=='task'||view=='main')&&!confirm('سيتم إنهاء الجلسة الحالية دون حفظ. متابعة؟'))return;leave();S=null;view=b.dataset.v;render()})}
+function render(){$('#dt').textContent=fmtD(today());if(!prof||view=='welcome'){vWelcome();return}navb();({home:vHome,main:vMain,task:vTask,done:vDone,drill:vDrill,drillrun:renderDrill,drilldone:vDrillDone,mind:vMind,log:vLog})[view]();window.scrollTo(0,0)}
+function vWelcome(){$('#nav').innerHTML='';$('#app').innerHTML=`<div class="card"><h2 style="margin-top:0">أهلًا بك 🦫</h2><p class="sm">اكتب اسمك ومرحلتك الدراسية ليُضبط مستوى الأسئلة والتمارين لك.</p><label for="nm">الاسم</label><input id="nm" maxlength="30" value="${prof?prof.name:''}" autocomplete="name"><label for="gr">المرحلة الدراسية</label><select id="gr">${GR.map((g,i)=>`<option value="${i}" ${prof&&prof.g==i?'selected':''}>${g[0]}</option>`).join('')}</select><button class="btn" id="sv">ابدأ</button></div>`;
+ $('#sv').onclick=()=>{const nm=$('#nm').value.trim();if(!nm){$('#nm').focus();return}prof={name:nm,g:+$('#gr').value};save();view='home';render()}}
+
+function vHome(){const g=growth(),M=mind();
+ $('#app').innerHTML=`<div class="card hero"><small>أهلًا ${prof.name} • ${GR[prof.g][0]}</small><div class="big">${M?M.all:'—'}</div><small>المستوى الذهني: ${M?lv(M.all):'ابدأ اختبارًا لتعرف مستواك'}${g.rate===null?'':' • النمو '+(g.rate>=0?'▲':'▼')+Math.abs(g.rate)+'%'} • ${streak()} أيام متتالية</small></div>
+ <h2>اختبار تجريبي كامل</h2><div class="card"><p class="sm" style="margin:0">مثل المسابقة الرسمية: 10 مسائل تفاعلية تختار منها ما تشاء، ولكل مسألة 4 مستويات (10 درجات لكل مستوى، 400 للاختبار). لا يفتح المستوى حتى تحل الذي قبله، وتضغط «تحقق» لاعتماد الحل، ولكل مسألة حل واحد فقط. يوجد مؤقت واحد للاختبار كله، وعند انتهائه يُغلق الاختبار دفعة واحدة. بعد الاختبار نقيس سرعتك وترددك ونقترح عليك تدريبات.</p><button class="btn" id="ex">ابدأ الاختبار (${cfg.min*10} دقيقة)</button></div>
+ <h2>تدريب على مسألة تختارها</h2><div class="card"><div class="set"><span>أتوقف عند المستوى</span><span>${[1,2,3,4].map(l=>`<button class="${cfg.stop==l?'on':''}" data-st="${l}">${l}</button>`).join('')}</span></div><div class="grid2" style="margin-top:10px">${T.map((t,i)=>`<button class="btn alt" style="margin:0;font-size:.92rem;padding:10px" data-k="${i}">${i+1}. ${t.n}</button>`).join('')}</div></div>
+ <h2>نماذج وتدريبات رسمية</h2><div class="card"><p class="sm" style="margin:0 0 4px">للتدرّب على أسئلة بيبراس الأصلية المنشورة، افتح الموقع الرسمي (قسم «نماذج الأسئلة»)، أو ابحث في يوتيوب عن شروحات حلولها.</p><a class="lnk" href="https://bebrasksa.org" target="_blank" rel="noopener">الموقع الرسمي لبيبراس موهبة ↗</a><a class="lnk" href="https://www.youtube.com/results?search_query=%D8%AA%D8%AF%D8%B1%D9%8A%D8%A8%D8%A7%D8%AA+%D8%A8%D9%8A%D8%A8%D8%B1%D8%A7%D8%B3+%D9%85%D9%88%D9%87%D8%A8%D8%A9" target="_blank" rel="noopener">شروحات تدريبات بيبراس على يوتيوب ↗</a></div><h2>الإعدادات</h2><div class="card"><div class="set"><span>مستوى الصعوبة: <b>${Math.floor(cfg.dif)}</b> <small class="sm">(+${base()} حسب مرحلتك، ويزيد تلقائيًا)</small></span><span><button data-c="dif-">−</button><button data-c="dif+">+</button></span></div><div class="set"><span>زمن الاختبار: <b>${cfg.min*10}</b> دقيقة (التدريب على مسألة: ${cfg.min})</span><span><button data-c="min-">−</button><button data-c="min+">+</button></span></div><div class="set"><span>${prof.name} • ${GR[prof.g][0]}</span><button class="on" id="pf" style="width:auto;padding:0 12px">تعديل</button></div></div>`;
+ $('#ex').onclick=()=>start(T.map((_,i)=>i),'exam');$('#pf').onclick=()=>{view='welcome';render()};
+ document.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>start([+b.dataset.k],'task'));
+ document.querySelectorAll('[data-st]').forEach(b=>b.onclick=()=>{cfg.stop=+b.dataset.st;save();render()});
+ document.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{const c=b.dataset.c;if(c=='dif-')cfg.dif=Math.max(0,Math.floor(cfg.dif)-1);if(c=='dif+')cfg.dif=Math.min(8,Math.floor(cfg.dif)+1);if(c=='min-')cfg.min=Math.max(1,cfg.min-1);if(c=='min+')cfg.min=Math.min(10,cfg.min+1);save();render()})}
+
+/* ===== الاختبار ===== */
+function start(q,m){const d=dEff(),per=cfg.min*60;S={q,m,t0:Date.now(),last:Date.now(),tk:{},cur:m=='task'?q[0]:null,stop:m=='task'?cfg.stop:4,total:m=='exam'?per*10:per};
+ q.forEach(k=>{const st=[0,1,2,3].map(l=>T[k].init(l,d));S.tk[k]={st,cp:st.map(x=>JSON.stringify(x)),h:[[],[],[],[]],ok:[0,0,0,0],tried:[0,0,0,0],first:0,lv:0,used:0,att:0,und:0,rst:0,lt:[0,0,0,0],sk:0,fa:null,open:null,msg:''}});
+ view=m=='exam'?'main':'task';render();clearInterval(tm);tm=setInterval(tick,1000)}
+function tick(){if(!S||!S.tk)return;const now=Date.now(),dt=(now-S.last)/1000;S.last=now;if(S.cur!==null){const t=S.tk[S.cur];t.used+=dt;t.lt[t.lv]+=dt;const sk=$('#stuck');if(sk)sk.hidden=!(t.lt[t.lv]>=120&&!t.ok[t.lv])}
+ const rem=S.total-(now-S.t0)/1000;if(rem<=0){finish(1);return}
+ const el=$('#tm');if(el)el.textContent='⏱ الوقت المتبقي '+mmss(rem);const pb=$('#pb');if(pb)pb.style.width=(100-rem/S.total*100)+'%'}
+const head=()=>`<div class="top"><span>🦫 الدرجة: <b id="sc">${score()}</b> / ${S.q.length*10*S.stop}</span><span id="tm"></span></div><div class="bar"><i id="pb" style="width:0"></i></div>`;
+function vMain(){$('#app').innerHTML=head()+`<div class="grid2" style="margin-top:10px">${S.q.map(k=>{const t=S.tk[k];return`<button class="tk" data-k="${k}"><b>${k+1}. ${T[k].n}</b><br>${t.ok.map(x=>x?'✅':'⬜').join('')}<br><small>${t.used>0?'استغرقت '+mmss(t.used):'لم تبدأ'}</small></button>`}).join('')}</div><button class="btn alt" id="fin">إنهاء الاختبار وعرض النتيجة</button>`;
+ document.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{S.cur=+b.dataset.k;S.last=Date.now();view='task';render()});
+ $('#fin').onclick=()=>{if(confirm('هل أنهيت الاختبار؟'))finish()};tick()}
+const EXP=[['الطريق الأقصر يُوجد بتجربة المسارات بالتدريج (بحث بالعرض)؛ كل أمر زائد يطيل الطريق، ولا بد من المرور بالأوراق قبل البيت.','خوارزميات البحث عن المسار'],
+['كل تبديل متجاور يصحح زوجًا واحدًا مقلوبًا، فأقل عدد يساوي عدد الأزواج المقلوبة؛ وعند السماح بتبديل أي جذعين يساوي عدد الجذوع ناقص عدد الحلقات.','الفرز وهياكل البيانات'],
+['ابدأ من البيوت المقفلة واستنتج ألوان جيرانها؛ كل لون مستبعد يضيّق الاحتمالات حتى يبقى حل واحد.','القيود والاستدلال (تلوين الرسوم)'],
+['ضغط المصباح مرتين يلغي أثره، وترتيب الضغطات لا يهم؛ لذلك الحل مجموعة ضغطات فريدة وأقل عدد منها هو المطلوب.','الترميز الثنائي والتناظر'],
+['ترتيب الضربات لا يهم، المهم كم مرة تُغطّى كل خلية مقارنة بعدد الأشكال (الحساب الدوري).','الحساب الدوري والتحويلات'],
+['اختر دائمًا أرخص جسر لا يصنع دورة مع ما بنيته؛ هذه طريقة كروسكال لإيجاد أقل تكلفة.','الأشجار الممتدة الصغرى'],
+['تتبّع الماء من البحيرة: أغلق كل بوابة تقود إلى حقل حجري فقط، وأبقِ مفتوحة كل بوابة يحتاجها حقل قمح للوصول.','الرسوم الموجهة والوصولية'],
+['انقل الجذوع الصغيرة إلى أعمدة جانبية لتحرير الكبير ثم أعدها؛ وكلما زادت الأعمدة قلّت الحركات.','التكرار والاستدعاء الذاتي'],
+['كل وزنة تقسم الاحتمالات إلى ثلاثة أقسام (يسار، يمين، متساوٍ)، فتكفي k وزنات لـ 3^k جذعًا.','البحث بالقسمة'],
+['جرّب العمليات بالترتيب أو ارجع من العدد المطلوب إلى البداية؛ والأعداد الممنوعة تغلق بعض الطرق.','البحث في الحالات']];
+const navStrip=()=>S.m=='exam'?`<div class="nvs">${S.q.map(k=>`<button class="nv ${k==S.cur?'cur':''} ${S.tk[k].ok.some(x=>x)?'dn':''}" data-nv="${k}" aria-label="المسألة ${k+1}">${k+1}</button>`).join('')}</div>`:'';
+function vTask(){const k=S.cur,t=S.tk[k],ix=S.q.indexOf(k);if(!t.open)t.open=Date.now();
+ $('#app').innerHTML=head()+navStrip()+`<div class="ttl"><span class="num">${k+1}</span><div><b>${T[k].n}</b><div class="sm" id="lvl"></div></div><button class="ghost" id="bk" style="margin:0">${S.m=='exam'?'القائمة':'إنهاء'}</button></div><div class="tabs" id="tabs"></div>${art(k)}<div class="card" id="tb"></div>${S.m=='exam'?`<div class="pn"><button class="ghost" data-nv="${S.q[(ix+S.q.length-1)%S.q.length]}">▶ السابقة</button><button class="ghost" data-nv="${S.q[(ix+1)%S.q.length]}">التالية ◀</button></div>`:''}`;
+ document.querySelectorAll('[data-nv]').forEach(b=>b.onclick=()=>{S.cur=+b.dataset.nv;S.last=Date.now();render()});
+ $('#bk').onclick=()=>{if(S.m=='exam'){S.cur=null;view='main';render()}else finish()};
+ $('#tb').onclick=e=>{const b=e.target.closest('[data-a]');if(!b)return;const T0=T[k],a=b.dataset.a,l=t.lv;
+  if(a=='reset'){t.st[l]=JSON.parse(t.cp[l]);t.h[l]=[];t.rst++;t.msg=''}
+  else if(a=='undo'){const h=t.h[l];if(h.length){t.st[l]=JSON.parse(h.pop());t.und++;t.msg=''}else t.msg='لا توجد خطوة للتراجع عنها'}
+  else if(a=='swap'){const n2=T0.init(l,dEff());t.st[l]=n2;t.cp[l]=JSON.stringify(n2);t.h[l]=[];t.lt[l]=0;t.sk++;t.tried[l]=0;t.msg='🔄 تم تغيير السؤال إلى سؤال جديد بنفس القواعد'}
+  else if(a=='nxt'){t.lv++;t.msg=''}
+  else if(a=='chk'){const first=!t.tried[l];t.tried[l]=1;if(t.ok[l])t.msg='✅ سبق أن حللت هذا المستوى';else if(T0.ok(t.st[l])){t.ok[l]=1;if(first)t.first++;t.msg='✅ إجابة صحيحة! +10 درجات';$('#sc').textContent=score();if(l+1>=S.stop&&S.m=='task'){body();setTimeout(()=>{if(S&&S.m=='task')finish()},2500);return}}else{t.att++;t.msg='❌ ليست الإجابة الصحيحة؛ راجع الشروط والحد الأقصى وحاول مرة أخرى'}}
+  else{if(t.fa===null)t.fa=(Date.now()-t.open)/1000;t.h[l].push(JSON.stringify(t.st[l]));if(t.h[l].length>300)t.h[l].shift();T0.act(t.st[l],a,b.dataset.i)}
+  body()};
+ body();tick()}
+function body(){const k=S.cur,t=S.tk[k],T0=T[k],st=t.st[t.lv],last=t.lv+1>=S.stop,gt=T0.g(st),i=gt.indexOf('. '),story=i>0?gt.slice(0,i+1):gt,task=i>0?gt.slice(i+2):'';
+ $('#lvl').textContent=`المستوى ${t.lv+1} من ${S.stop}`;
+ $('#tabs').innerHTML=Array.from({length:S.stop},(_,l)=>`<button class="${l==t.lv?'on':''} ${t.ok[l]?'dn':''}" data-l="${l}" ${l>0&&!t.ok[l-1]?'disabled':''}>${l>0&&!t.ok[l-1]?'🔒':t.ok[l]?'✓':''} م${l+1}${l==3?' 🔥':''}</button>`).join('');
+ $('#tabs').querySelectorAll('button').forEach(b=>b.onclick=()=>{t.lv=+b.dataset.l;t.msg='';body()});
+ $('#tb').innerHTML=`<div class="story">${story}</div>${task?`<div class="task"><b>المطلوب:</b> ${task}</div>`:''}${T0.ui(st)}<p class="msg">${t.msg}</p><div class="stuck" id="stuck" ${t.lt[t.lv]>=120&&!t.ok[t.lv]?'':'hidden'}>⏳ مرّ وقت طويل على هذا المستوى دون حل. يمكنك تغيير السؤال بسؤال جديد بنفس القواعد.<button class="btn alt" data-a="swap">🔄 غيّر السؤال</button></div>${t.ok[t.lv]?`<div class="expl"><b>شرح الحل</b><br>${EXP[k][0]}<br><span class="sm">المفهوم الحاسوبي: ${EXP[k][1]}</span></div>`:''}<button class="btn ${t.ok[t.lv]?'ok':''}" data-a="chk">تحقق ✓</button>${t.ok[t.lv]&&!last?'<button class="btn alt" data-a="nxt">المستوى التالي ◀</button>':''}<div><button class="ghost" data-a="undo">↶ تراجع خطوة</button><button class="ghost" data-a="reset">إعادة المستوى</button></div>`}
+function finish(up){leave();const e={d:today(),ts:Date.now(),m:S.m,dif:dEff(),mx:S.m=='exam'?40:10*S.stop,r:S.q.map(k=>{const t=S.tk[k];return{k,s:t.ok,t:Math.round(t.used),a:t.att,u:t.und,rs:t.rst,ft:Math.round(t.fa||0),f:t.first,sk:t.sk}})};
+ log.push(e);cfg.dif=Math.min(8,cfg.dif+(S.m=='exam'?1:.5));save();S={e,up};view='done';render()}
+function vDone(){const e=S.e,g=growth(),m=met([e]),M=mind();
+ $('#app').innerHTML=`<div class="card hero"><small>${S.up?'⏰ انتهى الوقت وأُغلق الاختبار • ':''}نتيجتك يا ${prof.name}</small><div class="big">${tot(e)}/${e.mx*e.r.length}</div><small>مؤشر الجلسة ${pct(e)}% • الصعوبة التالية ${Math.floor(cfg.dif)+base()}</small></div>
+ <div class="card" style="margin-top:10px">${e.r.map(r=>`<div class="row"><span>${T[r.k].n}</span><span>${r.s.map(x=>x?'✅':'⬜').join('')} <b>${sc(r)}</b></span></div>`).join('')}</div>
+ ${m?`<h2>تحليل أدائك في هذه الجلسة</h2><div class="card"><div class="cat"><span>الدقة</span><div class="bar"><i style="width:${m.acc}%"></i></div><b>${Math.round(m.acc)}</b></div><div class="cat"><span>سرعة الحل</span><div class="bar"><i style="width:${m.speed}%"></i></div><b>${Math.round(m.speed)}</b></div><div class="cat"><span>الحسم</span><div class="bar"><i style="width:${m.dec}%"></i></div><b>${Math.round(m.dec)}</b></div><div class="cat"><span>التخطيط</span><div class="bar"><i style="width:${m.plan}%"></i></div><b>${Math.round(m.plan)}</b></div><p class="sm" style="margin:6px 0 0">متوسط ${Math.round(m.avg)} ث لكل مستوى • التردد ${hl(m.hes)} (تراجع ${m.und} • إعادة ${m.rst} • إجابات خاطئة ${m.wr})${e.r.some(r=>r.sk)?` • غيّرت السؤال ${e.r.reduce((a,r)=>a+(r.sk||0),0)} مرات`:''}</p></div>`:'<p class="sm">لم تُحل مستويات كافية لتحليل الأداء.</p>'}
+ ${recHtml(M)}<button class="btn" id="h">رجوع للتدريب</button><button class="btn alt" id="p">المستوى الذهني</button>`;
+ $('#h').onclick=()=>{S=null;view='home';render()};$('#p').onclick=()=>{S=null;view='mind';render()};bindRec()}
+
+/* ===== التمارين الذهنية (خارج الاختبار) ===== */
+const opts=(q,r)=>{const o=new Set([r]);let g=0;while(o.size<4&&g++<200){const x=r+(rnd(11)-5)*(1+rnd(2));if(x!=r&&x>=0)o.add(x)}let x=r+1;while(o.size<4)o.add(x++);const a=sh([...o]);return{q,o:a,a:a.indexOf(r)}};
+function gcalc(d){const t=rnd(3);let a,b,q,r;if(t==0){a=10+rnd(30+10*d);b=10+rnd(30+10*d);q=`${a} + ${b}`;r=a+b}else if(t==1){a=30+rnd(60+10*d);b=10+rnd(a-9);q=`${a} − ${b}`;r=a-b}else{a=2+rnd(8+d);b=2+rnd(8+d);q=`${a} × ${b}`;r=a*b}return opts(q+' = ؟',r)}
+function gseq(d){const t=rnd(5);let a,r;if(t==0){const s=2+rnd(9),st=2+rnd(4+d);a=[0,1,2,3].map(i=>s+i*st);r=s+4*st}else if(t==1){const s=1+rnd(3),m=2+rnd(2);a=[0,1,2,3].map(i=>s*m**i);r=s*m**4}else if(t==2){const s=1+rnd(5);a=[0,1,2,3].map(i=>(s+i)**2);r=(s+4)**2}else if(t==3){const x=1+rnd(4),y=2+rnd(4);a=[x,y,x+y,x+2*y];r=2*x+3*y}else{const s=10+rnd(10),u=3+rnd(6),v=1+rnd(2);a=[s,s+u,s+u-v,s+2*u-v];r=s+2*u-2*v}return opts(a.join('، ')+'، ؟<br><span class="sm">ما العدد التالي؟</span>',r)}
+function gmem(d){const len=Math.min(8,4+(d>>1)),seq=Array.from({length:len},()=>rnd(10)),p=rnd(len),o=new Set([seq[p]]);while(o.size<4)o.add(rnd(10));const a=sh([...o]);return{seq,q:`ما الرقم رقم ${p+1}؟`,o:a,a:a.indexOf(seq[p])}}
+function glogic(d){const N=sh(['سارة','نورة','هند','مها','ريم','لجين']),m=Math.min(5,3+(d>>2)),ord=N.slice(0,m),st=sh(ord.slice(0,-1).map((x,i)=>`${x} أطول من ${ord[i+1]}`)),t=rnd(3),k=m>2?2+rnd(m-2):2,ans=t==0?ord[0]:t==1?ord[m-1]:ord[k-1],ask=t==0?'من الأطول؟':t==1?'من الأقصر؟':`من ترتيبه ${k} من الأطول؟`,o=new Set([ans]);for(const x of sh([...ord,...N]))if(o.size<4)o.add(x);const a=sh([...o]);return{q:st.join('<br>')+`<br><b>${ask}</b>`,o:a,a:a.indexOf(ans)}}
+function vDrill(){$('#app').innerHTML=`<p class="sm">تمارين ذهنية قصيرة خارج الاختبار تنمّي السرعة والتركيز والحسم. اضغط الإجابة لتحديدها ثم اضغط عليها مرة أخرى لتأكيدها؛ ونقيس بذلك سرعتك وتغييرك لرأيك (التردد).</p>`+Object.keys(DR).map(c=>{const a=dr.filter(r=>r.c==c).slice(-5),n=a.length;return`<div class="card" style="margin-bottom:10px"><b>${DR[c]}</b><p class="sm" style="margin:2px 0">${n?`آخر ${n} جلسات: دقة ${Math.round(a.reduce((x,r)=>x+r.ok/r.n,0)/n*100)}% • ${(a.reduce((x,r)=>x+r.t,0)/n).toFixed(1)} ث للسؤال • تغيير الرأي ${(a.reduce((x,r)=>x+r.ch,0)/n).toFixed(1)}`:'لم تجرّب بعد'}</p><button class="btn alt" data-dc="${c}">ابدأ (8 أسئلة)</button></div>`}).join('');bindRec()}
+function startDrill(c){leave();S=null;DQ={c,n:8,i:0,r:[],lock:0};view='drillrun';render();dNext()}
+function dNext(){const D=DQ;if(!D)return;if(D.i>=D.n){dDone();return}D.cur=({calc:gcalc,seq:gseq,mem:gmem,logic:glogic})[D.c](Math.min(6,dEff()));D.sel=-1;D.ch=0;D.lock=0;D.ph=D.cur.seq?'show':'ask';D.t0=Date.now();renderDrill()}
+function renderDrill(){const D=DQ;if(!D||!D.cur)return;const q=D.cur;
+ if(D.ph=='show'){$('#app').innerHTML=`<div class="top"><span>${DR[D.c]}</span><span>${D.i+1} / ${D.n}</span></div><div class="card" style="text-align:center"><p>احفظ الأرقام بترتيبها:</p><div style="font-size:2.2rem;font-weight:800;letter-spacing:.25em" dir="ltr">${q.seq.join(' ')}</div></div>`;D.to=setTimeout(()=>{D.ph='ask';D.t0=Date.now();renderDrill()},650*q.seq.length);return}
+ $('#app').innerHTML=`<div class="top"><span>${DR[D.c]}</span><span>${D.i+1} / ${D.n}</span></div><div class="bar"><i style="width:${D.i/D.n*100}%"></i></div><div class="card"><div style="font-size:1.2rem;font-weight:700;margin:6px 0 12px">${q.q}</div>${q.o.map((o,i)=>`<button class="dopt" data-i="${i}" dir="auto">${o}</button>`).join('')}<p class="sm">اضغط لتحديد الإجابة ثم اضغط عليها لتأكيدها</p></div>`;
+ document.querySelectorAll('.dopt').forEach(b=>b.onclick=()=>dTap(+b.dataset.i))}
+function dTap(i){const D=DQ;if(!D||D.lock)return;const bs=document.querySelectorAll('.dopt');if(D.sel!=i){if(D.sel>=0)D.ch++;D.sel=i;bs.forEach((b,k)=>b.classList.toggle('on',k==i));return}
+ D.lock=1;const ok=i==D.cur.a;D.r.push({ok,t:(Date.now()-D.t0)/1000,ch:D.ch});bs.forEach((b,k)=>{b.disabled=true;if(k==D.cur.a)b.classList.add('ok');else if(k==i)b.classList.add('no')});D.to=setTimeout(()=>{D.i++;dNext()},ok?600:1400)}
+function dDone(){const D=DQ,n=D.r.length,ok=D.r.filter(r=>r.ok).length;lastD={d:today(),ts:Date.now(),c:D.c,n,ok,t:D.r.reduce((a,r)=>a+r.t,0)/n,ch:D.r.reduce((a,r)=>a+r.ch,0)/n};dr.push(lastD);save();DQ=null;view='drilldone';render()}
+function vDrillDone(){const r=lastD;$('#app').innerHTML=`<div class="card hero"><small>${DR[r.c]}</small><div class="big">${r.ok}/${r.n}</div><small>${r.t.toFixed(1)} ث للسؤال • تغيير الرأي ${r.ch.toFixed(1)} لكل سؤال</small></div><button class="btn" data-dc="${r.c}">مرة أخرى</button><button class="btn alt" id="b">رجوع للتمارين</button><button class="btn alt" id="m">المستوى الذهني</button>`;$('#b').onclick=()=>{view='drill';render()};$('#m').onclick=()=>{view='mind';render()};bindRec()}
+
+/* ===== المستوى الذهني والسجل ===== */
+function chart(){const P=[];for(let i=13;i>=0;i--)P.push(dayIdx(d=>d==daysAgo(i)));const X=i=>20+i*300/13,Y=v=>120-v,pts=P.map((v,i)=>v===null?null:[X(i),Y(v)]).filter(Boolean);
+ if(!pts.length)return'<p class="sm">لا توجد بيانات بعد. أكمل جلسة لتظهر النقطة الأولى.</p>';
+ return`<svg class="chart" viewBox="0 0 340 150">${[0,50,100].map(v=>`<line x1="20" x2="320" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--ln)"/><text x="334" y="${Y(v)+4}" font-size="10" fill="var(--mu)" text-anchor="end">${v}</text>`).join('')}<polyline fill="none" stroke="var(--ac)" stroke-width="2.5" points="${pts.map(p=>p.join(',')).join(' ')}"/>${pts.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="var(--ac)"/>`).join('')}<text x="20" y="145" font-size="10" fill="var(--mu)">قبل 14 يومًا</text><text x="320" y="145" font-size="10" fill="var(--mu)" text-anchor="end">اليوم</text></svg>`}
+function vMind(){const M=mind(),g=growth(),ex=log.filter(s=>s.m=='exam').map(tot);
+ const bar=(n,v)=>`<div class="cat"><span>${n}</span><div class="bar"><i style="width:${v==null?0:v}%"></i></div><b>${v==null?'—':Math.round(v)}</b></div>`;
+ $('#app').innerHTML=`<div class="card hero"><small>${prof.name} • ${GR[prof.g][0]}</small><div class="big">${M?M.all:'—'}</div><small>المستوى الذهني: ${M?lv(M.all):'لا توجد بيانات بعد — أكمل اختبارًا أو تمرينًا'}</small></div>
+ ${M?`<h2>مكوّنات المستوى الذهني</h2><div class="card">${bar('الدقة',M.acc)}${bar('سرعة الحل',M.speed)}${bar('الحسم (قلة التردد)',M.dec)}${bar('التخطيط',M.plan)}${bar('التحمل',M.endu)}<p class="sm" style="margin:6px 0 0">${M.e?`متوسط ${Math.round(M.e.avg)} ث لكل مستوى • التردد ${hl(M.e.hes)} (تراجع ${M.e.und} • إعادة ${M.e.rst} • إجابات خاطئة ${M.e.wr}) • أول حركة بعد ${Math.round(M.e.ft)} ث`:''}${M.d?` • التمارين: ${M.d.t.toFixed(1)} ث للسؤال، تغيير الرأي ${M.d.ch.toFixed(1)}`:''}</p></div>
+ <div class="grid2" style="margin-top:10px"><div class="card st"><b class="${g.rate===null?'':g.rate>=0?'up':'down'}">${g.rate===null?'—':(g.rate>=0?'▲':'▼')+Math.abs(g.rate)+'%'}</b><span>معدل النمو (${g.note})</span></div><div class="card st"><b>${ex.length?Math.max(...ex):'—'}</b><span>أفضل درجة اختبار (من 400)</span></div></div>
+ <h2>المؤشر اليومي</h2><div class="card">${chart()}</div>${recHtml(M)}`:'<div class="card" style="margin-top:10px"><p>ابدأ اختبارًا أو تمرينًا ذهنيًا ليحسب التطبيق سرعتك وترددك ودقتك وتخطيطك.</p></div>'}
+ <button class="ghost" id="rs">مسح كل البيانات</button>`;
+ $('#rs').onclick=()=>{if(confirm('سيتم حذف السجل والتمارين نهائيًا. متأكد؟')){log=[];dr=[];cfg.dif=0;save();render()}};bindRec()}
+function vLog(){const ds=[...new Set([...log,...dr].map(s=>s.d))].sort().reverse();
+ $('#app').innerHTML=ds.length?`<div class="card">${ds.map(d=>{const a=log.filter(s=>s.d==d),b=dr.filter(s=>s.d==d);return`<div class="row"><div><b>${fmtD(d)}</b><br><small>${a.length} جلسة اختبار • ${b.length} تمرين ذهني</small></div><div style="text-align:end"><b>${dayIdx(x=>x==d)===null?'—':dayIdx(x=>x==d)+'%'}</b><br><small>${a.reduce((x,s)=>x+tot(s),0)} درجة</small></div></div>`}).join('')}</div>`:'<div class="card"><p>سجلك فارغ. أكمل جلسة لتبدأ التسجيل اليومي.</p></div>'}
+render();
+</script>
+</body>
+</html>
